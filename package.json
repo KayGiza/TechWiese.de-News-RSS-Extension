@@ -11,13 +11,13 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:extension.sayHello"
+		"onCommand:techwiese.show"
 	],
-	"main": "./out/src/extension",
+	"main": "./out/extension",
 	"contributes": {
 		"commands": [{
-			"command": "extension.sayHello",
-			"title": "Hello World"
+			"command": "techwiese.show",
+			"title": "Techwiese: Show RSS Feed"
 		}]
 	},
 	"scripts": {
@@ -25,7 +25,11 @@
 		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
 	},
 	"devDependencies": {
-		"typescript": "^1.6.2",
+		"typescript": "^1.8.2",
 		"vscode": "0.10.x"
-	}
+	},
+    "dependencies": {
+        "feedparser": "~1.1.4",
+        "request": "~2.69.0"
+    }
 }

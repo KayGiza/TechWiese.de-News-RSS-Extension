@@ -1,12 +1,17 @@
-import * as vscode from 'vscode'; 
+import * as vscode from 'vscode';
+//import {getFeed} from './api';
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Congratulations, your extension "code-techwiese-rss" is now active!'); 
+	console.log('Extension "code-techwiese-rss" is now active!'); 
 
-	var disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-		vscode.window.showInformationMessage('Hello World!');
-	});
+	var disposable = vscode.commands.registerCommand('techwiese.show', cmdShow);
 	
 	context.subscriptions.push(disposable);
+}
+
+async function cmdShow() {
+    //let feed = await getFeed("https://www.microsoft.com/germany/msdn/rss/aktuell.xml");
+    
+    console.log(null);
 }
