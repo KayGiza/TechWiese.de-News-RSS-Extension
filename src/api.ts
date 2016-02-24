@@ -15,7 +15,7 @@ export async function getFeed(address: string): Promise<Feed[]> {
         let parserStream = new FeedParser();
         
         reqStream.on('error', reject);
-        reqStream.on('response', (res) => {
+        reqStream.on('response', (res: any) => {
             if (res.statusCode !== 200)
                 reqStream.emit('error', new Error('Bad status code'));
                 
