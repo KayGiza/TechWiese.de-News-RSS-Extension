@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-//import {getFeed} from './api';
+import {getFeed} from './api';
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -11,7 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 async function cmdShow() {
-    //let feed = await getFeed("https://www.microsoft.com/germany/msdn/rss/aktuell.xml");
+    let feeds = await getFeed("https://www.microsoft.com/germany/msdn/rss/aktuell.xml");
     
     console.log(null);
 }
