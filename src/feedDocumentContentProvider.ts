@@ -69,7 +69,7 @@ export class FeedDocumentContentProvider implements vscode.TextDocumentContentPr
     
     public renderFeed(feed: Feed): string {
         let title = `<h1><a target="_blank" href="${feed.link}">${feed.title}</a></h1>`;
-        let subtitle = `<span>${feed.date.toLocaleString()} [${feed.categories.toString()}]</span>`
+        let subtitle = `<span style="font-size: 80%;">${feed.date.toLocaleString()} [${feed.categories.toString()}]</span>`
         let content = `<p>${feed.summary}<p>`;
         return title + subtitle + content;
     }
