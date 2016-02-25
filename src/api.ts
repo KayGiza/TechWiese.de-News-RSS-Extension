@@ -38,8 +38,7 @@ export async function getFeed(address: string): Promise<Feed[]> {
             let meta: any = parserStream.meta;
             
             let item: any = null;
-            while (item = parserStream.read()) {     
-                console.log(JSON.stringify(item, null, 2));           
+            while (item = parserStream.read()) {               
                 feeds.push({
                     title: item.title,
                     description: item.description,
