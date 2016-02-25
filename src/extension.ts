@@ -1,6 +1,13 @@
 import * as vscode from 'vscode';
 import {getFeed} from './api';
-import {FeedContentProvider} from './feedContentProvider';
+import {FeedDocumentContentProvider, FeedSource} from './FeedDocumentContentProvider';
+
+
+const feedList: FeedSource = {
+    techwiese: "https://www.microsoft.com/germany/msdn/rss/aktuell.xml"
+};
+
+var feedProvider = new FeedDocumentContentProvider(feedList);
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -9,15 +16,9 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('techwiese.show', cmdShow);
 	context.subscriptions.push(disposable);
     
-    disposable = vscode.workspace.registerTextDocumentContentProvider("techwiese", new FeedContentProvider());
-	context.subscriptions.push(disposable);
-    
-	
+    feedProvider.register(context, "feed");
 }
 
 async function cmdShow() {
-    //let feeds = await getFeed("https://www.microsoft.com/germany/msdn/rss/aktuell.xml");
-    
-    //console.log(null);
-    await vscode.commands.executeCommand("vscode.previewHtml", vscode.Uri.parse("techwiese://test"));
+    await vscode.commands.executeCommand("vscode.previewHtml", vscode.Uri.parse("feed://techwiese"));
 }

@@ -4,6 +4,17 @@ import FeedParser = require("feedparser");
 
 export interface Feed {
     title: string;
+    description: string;
+    summary: string;
+    date: Date;
+    pubdate: Date;
+    link: string;
+    categories: string[];
+    image: {
+        url: string;
+        title: string;
+    };
+    language: string;
 }
 
 
@@ -26,13 +37,19 @@ export async function getFeed(address: string): Promise<Feed[]> {
         parserStream.on('readable', () => {
             let meta: any = parserStream.meta;
             
-            console.log("Meta: " + JSON.stringify(meta, null, 2));
             let item: any = null;
-            while (item = parserStream.read()) {
-                console.log(JSON.stringify(item, null, 2));
-                
+            while (item = parserStream.read()) {     
+                console.log(JSON.stringify(item, null, 2));           
                 feeds.push({
-                    title: "test"
+                    title: item.title,
+                    description: item.description,
+                    summary: item.summary,
+                    date: new Date(item.date),
+                    pubdate: new Date(item.pubdate),
+                    link: item.link,
+                    categories: item.categories,
+                    image: item.image,
+                    language: item.language
                 });
             }
         });
