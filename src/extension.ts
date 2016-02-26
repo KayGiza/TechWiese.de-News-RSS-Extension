@@ -17,8 +17,20 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
     
     feedProvider.register(context, "feed");
+    
+    setTimeout(startStartusBarItem, 1000);
 }
 
 async function cmdShow() {
     await vscode.commands.executeCommand("vscode.previewHtml", vscode.Uri.parse("feed://techwiese/News & Infos für Entwickler – TechWiese.de – ein deutschsprachiges Online-Angebot für Entwickler von Microsoft"));
+}
+
+function startStartusBarItem() {
+    
+}
+
+class NewsAnnouncer {
+    constructor(private _name: string) {
+        
+    }
 }
