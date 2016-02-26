@@ -43,6 +43,19 @@ export class FeedDocumentContentProvider implements vscode.TextDocumentContentPr
         }
     }
     
+    public async getNewFeedItems(feedId: string): Promise<number> {
+        let source = this._soucres[feedId];
+        
+        let lastView = this._lastViewedDB[feedId] || 0;
+        
+        let feeds = source.loaded;
+        if(!feeds) {
+            feeds = source.loaded = await getFeed(source.address);
+            source.lastUpdate = new Date();
+        }
+        return feeds.filter((item) => item.pubdate.valueOf() >= lastView).length;
+    }
+    
     public provideTextDocumentContent(uri: Uri, token: vscode.CancellationToken): Promise<string> {
         let source = this._soucres[uri.authority];
         

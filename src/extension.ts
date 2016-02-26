@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import {getFeed} from './api';
 import {FeedDocumentContentProvider, FeedSource} from './FeedDocumentContentProvider';
+import {NewsAnnouncer} from './newsAnnouncer';
 
 
 const feedList: FeedSource = {
@@ -8,6 +9,7 @@ const feedList: FeedSource = {
 };
 
 var feedProvider = new FeedDocumentContentProvider(feedList);
+var newsAnnouncer = new NewsAnnouncer(feedProvider, "techwiese", "techwiese.show");
 
 export function activate(context: vscode.ExtensionContext) {
 
@@ -23,14 +25,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 async function cmdShow() {
     await vscode.commands.executeCommand("vscode.previewHtml", vscode.Uri.parse("feed://techwiese/News & Infos für Entwickler – TechWiese.de – ein deutschsprachiges Online-Angebot für Entwickler von Microsoft"));
+    await newsAnnouncer.update();
 }
 
-function startStartusBarItem() {
-    
-}
-
-class NewsAnnouncer {
-    constructor(private _name: string) {
-        
-    }
+async function startStartusBarItem() {
+    await newsAnnouncer.update();
 }
