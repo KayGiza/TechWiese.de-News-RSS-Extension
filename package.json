@@ -2,7 +2,7 @@
     "name": "techwiese-rss-feed",
     "displayName": "News & Infos für Entwickler (TechWiese.de)",
     "description": "Tagesaktuelle News & Infos für Entwickler von Microsoft Deutschland.",
-    "version": "0.0.2",
+    "version": "1.0.0",
     "publisher": "KayGiza",
     "author": {
         "name": "Tobias Kahlert (a.k.a SirTobi)"
