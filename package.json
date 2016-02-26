@@ -27,7 +27,7 @@
         "commands": [
             {
                 "command": "techwiese.show",
-                "title": "Techwiese: Show News & Infos"
+                "title": "TechWiese: Show News & Infos"
             }
         ]
     },
