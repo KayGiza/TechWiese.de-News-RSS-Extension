@@ -20,7 +20,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:techwiese.show"
+        "*"
     ],
     "main": "./out/src/extension",
     "contributes": {

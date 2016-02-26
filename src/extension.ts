@@ -11,12 +11,17 @@ var feedProvider = new FeedDocumentContentProvider(feedList);
 
 export function activate(context: vscode.ExtensionContext) {
 
-	console.log('Extension "TechWiese.de-News-RSS" is now active!'); 
+	console.log('Extension "TechWiese.de-News-RSS" is now active!');
 
 	let disposable = vscode.commands.registerCommand('techwiese.show', cmdShow);
 	context.subscriptions.push(disposable);
     
     feedProvider.register(context, "feed");
+    
+    // open techwiese if no editor is open
+    if(vscode.window.visibleTextEditors.length == 0) {
+        vscode.commands.executeCommand("techwiese.show");
+    }
 }
 
 async function cmdShow() {
