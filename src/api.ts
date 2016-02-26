@@ -1,6 +1,6 @@
 //import feedparser = require("feedparser");
-import * as request from "request";
-import FeedParser = require("feedparser");
+var request = require("request");
+var FeedParser = require("feedparser");
 
 export interface Feed {
     title: string;
